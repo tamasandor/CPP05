@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:32:57 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/18 20:08:05 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/19 22:42:48 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ int Bureaucrat::getGrade() const
 	return (m_grade);
 }
 
-void	Bureaucrat::incrase()
+void	Bureaucrat::increase()
 {
-	if (m_grade + 1 > 150)
-		throw Bureaucrat::GradeTooLowException();
+	if (m_grade - 1 < 1)
+		throw Bureaucrat::GradeTooHighException();
 	m_grade--;
 }
 
 void	Bureaucrat::decrease()
 {
-	if (m_grade - 1 < 1)
-		throw Bureaucrat::GradeTooHighException();
+	if (m_grade + 1 > 150)
+		throw Bureaucrat::GradeTooLowException();
 	m_grade++;
 }
 

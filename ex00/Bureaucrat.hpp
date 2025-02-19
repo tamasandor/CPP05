@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:32:51 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/18 20:01:26 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/19 22:41:43 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 	~Bureaucrat();
 	const std::string 	getName() const;
 	int 				getGrade() const;
-	void				incrase();
+	void				increase();
 	void				decrease();
 
 	class GradeTooHighException : public std::exception
