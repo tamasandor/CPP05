@@ -3,6 +3,7 @@
 int	main()
 {
 	Bureaucrat all("Janos", 42);
+
 	try
 	{
 		Bureaucrat erroring("Bela", 151);
@@ -11,6 +12,7 @@ int	main()
 	{
 		std::cout << e.what() << '\n';
 	}
+
 	try
 	{
 		Bureaucrat erroring("Lionel", 0);
@@ -19,6 +21,8 @@ int	main()
 	{
 		std::cout << e.what() << '\n';
 	}
+
+
 	try
 	{
 		Bureaucrat erroring("Bela", 149);
@@ -33,6 +37,7 @@ int	main()
 	{
 		std::cout << e.what() << '\n';
 	}
+
 	try
 	{
 		Bureaucrat another("Bela", 3);
@@ -47,6 +52,7 @@ int	main()
 	{
 		std::cout << e.what() << '\n';
 	}
+
 	std::cout << all;
 	all.increase();
 	std::cout << all;
