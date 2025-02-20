@@ -6,12 +6,12 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:48:47 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/19 22:51:22 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/20 15:27:59 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Form_hpp
-#define Form_hpp
+#ifndef FORM_hpp
+#define FORM_hpp
 
 #include <iostream>
 
@@ -23,9 +23,9 @@ private:
 	const int			m_gradeToSign;
 	const int			m_gradeToExecute;
 public:
-	Form();
-	Form(Form &original);
-	Form& operator =(Form &original);
+	Form(const std::string name, const int gradeToSign, const int gradeToExecute);
+	Form(const Form &original);
+	Form &operator =(const Form &original);
 	~Form();
 };
 
