@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:32:57 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/19 22:42:48 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/20 13:12:33 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,23 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : m_name(name)
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	m_grade = grade;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& original) : m_name(original.m_name)
+{
+	if (this != &original)
+	{
+		this->m_grade = original.m_grade;
+	}
+}
+
+Bureaucrat& Bureaucrat::operator =(const Bureaucrat& original)
+{
+	if (this != &original)
+	{
+		this->m_grade = original.m_grade;
+	}
+	return (*this);
 }
 
 Bureaucrat::~Bureaucrat()

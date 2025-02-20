@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:32:51 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/19 22:41:43 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/20 13:12:44 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ private:
 	int					m_grade;
 public:
 	Bureaucrat(std::string  const name, int grade);
+	Bureaucrat(const Bureaucrat& original);
+	Bureaucrat& operator =(const Bureaucrat& original);
 	~Bureaucrat();
 	const std::string 	getName() const;
 	int 				getGrade() const;
