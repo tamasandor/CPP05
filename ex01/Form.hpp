@@ -6,15 +6,18 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:48:47 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/21 17:17:04 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/21 19:43:42 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_hpp
 #define FORM_hpp
 
+#include "Bureaucrat.hpp"
 #include <exception>
 #include <iostream>
+
+class Bureaucrat;
 
 class Form
 {
@@ -39,10 +42,16 @@ public:
 		virtual const char *what() const throw();
 	};
 
+	class FormIsSignedAlready : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
+
 	std::string	getName() const;
 	bool		getSignedState() const;
 	int	getGradeToSign() const;
 	int	getGradeToExecute() const;
+	void beSigned(Bureaucrat &kumpel);
 };
 
 std::ostream &operator <<(std::ostream &out, Form &form);

@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:48:49 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/21 17:32:38 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/21 20:03:20 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,24 @@ const char *Form::GradeTooHighException::what() const throw()
 	return ("Grade is too high");
 }
 
+const char *Form::FormIsSignedAlready::what() const throw()
+{
+	return ("Form is signed already");
+}
+
 std::ostream &operator <<(std::ostream &out, Form &form)
 {
-	out << "Form with the name: " << form.getName() << (form.getSignedState() ? (std::string(GREEN600) + " is signed " + RESET) : std::string(RED700) + " is not signed " + RESET)
+	out << "Form: " << YELLOW400 << form.getName() << RESET << (form.getSignedState() ? (std::string(GREEN600) + " is signed " + RESET) : std::string(RED700) + " is not signed " + RESET)
 			<< "required grade to sign: " << form.getGradeToSign() << " required grade to execute: "
 			<< form.getGradeToExecute() << "\n";
 	return (out);
+}
+
+void Form::beSigned(Bureaucrat &kumpel)
+{
+	if (m_signed)
+		throw Form::FormIsSignedAlready();
+	if (kumpel.getGrade() > m_gradeToSign)
+		throw Form::GradeTooLowException();
+	m_signed = true;
 }

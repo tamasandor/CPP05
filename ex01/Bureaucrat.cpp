@@ -6,11 +6,12 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:32:57 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/20 13:09:18 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/21 20:02:10 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "colors.hpp"
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : m_name(name)
 {
@@ -84,3 +85,17 @@ std::ostream &operator <<(std::ostream &out, Bureaucrat &burocreat)
 	return (out);
 }
 
+void Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << CYAN400 << m_name << RESET << GREEN500 << " signed " << RESET << form.getName() << '\n';
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << CYAN400 << m_name << RESET << RED500 << " couldn't sign " << RESET << form.getName() << " because " << e.what() << '\n';
+	}
+	
+
+}

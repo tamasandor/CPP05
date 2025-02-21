@@ -40,19 +40,18 @@ int	main()
 
 	try
 	{
-		Bureaucrat another("Bela", 3);
+		Bureaucrat another(all);
 		another.increase();
 		std::cout << another;
-		another.increase();
-		std::cout << another;
-		another.increase();
-		std::cout << another;
+		// another.increase();
+		// std::cout << another;
+		// another.increase();
+		// std::cout << another;
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << '\n';
 	}
-
 	std::cout << all;
 	all.increase();
 	std::cout << all;
