@@ -6,14 +6,19 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:48:49 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/20 15:30:13 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/21 17:32:38 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "colors.hpp"
 
 Form::Form(const std::string name, const int gradeToSign, const int gradeToExecute) : m_name(name), m_gradeToSign(gradeToSign), m_gradeToExecute(gradeToExecute)
 {
+	if (m_gradeToSign < 1 || m_gradeToExecute < 1)
+		throw Form::GradeTooHighException();
+	if (m_gradeToSign > 150 || m_gradeToExecute > 150)
+		throw Form::GradeTooLowException();
 	m_signed = false;
 }
 
@@ -37,4 +42,42 @@ Form& Form::operator =(const Form &original)
 Form::~Form()
 {
 
+}
+
+std::string	Form::getName() const
+{
+	return (m_name);
+}
+
+bool		Form::getSignedState() const
+{
+	return (m_signed);
+}
+
+int	Form::getGradeToSign() const
+{
+	return (m_gradeToSign);
+}
+
+int	Form::getGradeToExecute() const
+{
+	return (m_gradeToExecute);
+}
+
+const char *Form::GradeTooLowException::what() const throw()
+{
+	return ("Grade is too low");
+}
+
+const char *Form::GradeTooHighException::what() const throw()
+{
+	return ("Grade is too high");
+}
+
+std::ostream &operator <<(std::ostream &out, Form &form)
+{
+	out << "Form with the name: " << form.getName() << (form.getSignedState() ? (std::string(GREEN600) + " is signed " + RESET) : std::string(RED700) + " is not signed " + RESET)
+			<< "required grade to sign: " << form.getGradeToSign() << " required grade to execute: "
+			<< form.getGradeToExecute() << "\n";
+	return (out);
 }
