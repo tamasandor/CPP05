@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:48:47 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/21 21:05:29 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/25 23:02:27 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ public:
 	AForm(const AForm &original);
 	AForm &operator =(const AForm &original);
 	virtual ~AForm();
+	virtual void action() const = 0;
 
 	class GradeTooHighException : public std::exception
 	{
@@ -47,11 +48,17 @@ public:
 		virtual const char *what() const throw();
 	};
 
+	class FormIsNotSigned : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
+	
 	std::string	getName() const;
 	bool		getSignedState() const;
 	int	getGradeToSign() const;
 	int	getGradeToExecute() const;
 	void beSigned(Bureaucrat &kumpel);
+	void execute(Bureaucrat const & executor) const;
 };
 
 std::ostream &operator <<(std::ostream &out, AForm &form);

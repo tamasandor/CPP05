@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:32:51 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/21 21:05:09 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/25 23:04:20 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ public:
 	void				increase();
 	void				decrease();
 	void				signForm(AForm& form);
+	void				executeForm(AForm const & form);
 
 	class GradeTooHighException : public std::exception
 	{

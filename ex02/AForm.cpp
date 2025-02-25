@@ -79,6 +79,11 @@ const char *AForm::FormIsSignedAlready::what() const throw()
 	return ("Form is signed already");
 }
 
+const char *AForm::FormIsNotSigned::what() const throw()
+{
+	return ("Form is NOT signed");
+}
+
 std::ostream &operator <<(std::ostream &out, AForm &form)
 {
 	out << "Form: " << YELLOW400 << form.getName() << RESET << (form.getSignedState() ? (std::string(GREEN600) + " is signed " + RESET) : std::string(RED700) + " is not signed " + RESET)
@@ -94,4 +99,13 @@ void AForm::beSigned(Bureaucrat &kumpel)
 	if (kumpel.getGrade() > m_gradeToSign)
 		throw AForm::GradeTooLowException();
 	m_signed = true;
+}
+
+void AForm::execute(Bureaucrat const & executor) const
+{
+	if (!m_signed)
+		throw AForm::FormIsNotSigned();
+	else if (executor.getGrade() > m_gradeToExecute)
+		throw AForm::GradeTooLowException();
+	action();
 }

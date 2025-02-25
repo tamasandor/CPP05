@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:32:57 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/21 21:05:19 by atamas           ###   ########.fr       */
+/*   Updated: 2025/02/25 23:07:09 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ void Bureaucrat::signForm(AForm& form)
 	{
 		std::cerr << CYAN400 << m_name << RESET << RED500 << " couldn't sign " << RESET << form.getName() << " because " << e.what() << '\n';
 	}
-	
+}
 
+void Bureaucrat::executeForm(AForm const & form)
+{
+		form.execute(*this);
 }
