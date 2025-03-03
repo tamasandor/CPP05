@@ -6,9 +6,12 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 20:37:46 by atamas            #+#    #+#             */
-/*   Updated: 2025/02/21 21:06:00 by atamas           ###   ########.fr       */
+/*   Updated: 2025/03/03 14:10:35 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
 #include <iostream>
@@ -24,3 +27,5 @@ public:
 	~ShrubberyCreationForm();
 	void action() const;
 };
+
+#endif
