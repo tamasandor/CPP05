@@ -6,7 +6,7 @@
 /*   By: atamas <atamas@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 19:01:58 by atamas            #+#    #+#             */
-/*   Updated: 2025/03/03 19:45:10 by atamas           ###   ########.fr       */
+/*   Updated: 2025/03/06 15:58:13 by atamas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ Intern::~Intern()
 
 AForm *Intern::makeForm(std::string formName, std::string formTarget)
 {
-	std::string names[4] = {"robotomy request", "shrubbery creation", "presidental pardon"};
-	FormCreationFunction forms[4] = {&Intern::makeRobotomyForm, &Intern::makeShrubberyForm, &Intern::makePresidentalForm};
+	std::string names[3] = {"robotomy request", "shrubbery creation", "presidental pardon"};
+	FormCreationFunction forms[3] = {&Intern::makeRobotomyForm, &Intern::makeShrubberyForm, &Intern::makePresidentalForm};
 	std::cout << "Intern creates " << formName << "\n";
 	// else
 	
